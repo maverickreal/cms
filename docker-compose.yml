@@ -1,0 +1,14 @@
+services:
+  server:
+    environment:
+      - PORT=3000
+    build: ./app
+    ports:
+      - '3000:2000'
+    depends_on:
+      - mongodb
+  mongodb:
+    image: mongo
+    command: # To cut the not-so-important mongo logging short
+      - '--logpath'
+      - '/var/log/mongodb/mongod.log'
